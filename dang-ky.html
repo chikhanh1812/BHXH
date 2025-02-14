@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng ký - Bảo hiểm xã hội</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/icon-titel.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo Bảo hiểm xã hội">
+            <h1>Bảo Hiểm Xã Hội Việt Nam</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="dich-vu.html">Dịch vụ</a></li>
+                <li><a href="huong-dan.html">Hướng dẫn</a></li>
+                <li><a href="lien-he.html">Liên hệ</a></li>
+            </ul>
+            <div id="current-date" class="current-date"></div>
+        </nav>
+    </header>
+
+    <!-- Phần đăng ký -->
+<section class="registration">
+    <h2>Đăng ký tham gia bảo hiểm xã hội trực tuyến</h2>
+    <div class="registration-steps">
+        <div class="step active" id="step1">
+            <span>1</span>
+            <p>Thông tin cá nhân</p>
+        </div>
+        <div class="step" id="step2">
+            <span>2</span>
+            <p>Xác thực thông tin</p>
+        </div>
+        <div class="step" id="step3">
+            <span>3</span>
+            <p>Hoàn tất đăng ký</p>
+        </div>
+    </div>
+
+    <!-- Form thông tin cá nhân -->
+    <form class="registration-form" id="personal-info-form">
+        <div class="form-group">
+            <label for="fullname">Họ và tên:</label>
+            <input type="text" id="fullname" name="fullname" required>
+        </div>
+        <div class="form-group">
+            <label for="phone">Số điện thoại:</label>
+            <input type="tel" id="phone" name="phone" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="address">Địa chỉ:</label>
+            <input type="text" id="address" name="address" required>
+        </div>
+        <div class="form-group">
+            <label for="dob">Ngày sinh:</label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="gender">Giới tính:</label>
+            <select id="gender" name="gender" required>
+                <option value="">Chọn giới tính</option>
+                <option value="male">Nam</option>
+                <option value="female">Nữ</option>
+                <option value="other">Khác</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="id-number">Số CMND/CCCD:</label>
+            <input type="text" id="id-number" name="id-number" required>
+        </div>
+        <button type="button" class="btn-next" id="next-button">Tiếp theo</button>
+    </form>
+
+    <!-- Form xác thực thông tin -->
+    <div class="registration-form" id="verification-form" style="display: none;">
+        <h3>Xác thực thông tin</h3>
+        <div class="form-group">
+            <label>Họ và tên:</label>
+            <p id="display-fullname"></p>
+        </div>
+        <div class="form-group">
+            <label>Số điện thoại:</label>
+            <p id="display-phone"></p>
+        </div>
+        <div class="form-group">
+            <label>Email:</label>
+            <p id="display-email"></p>
+        </div>
+        <div class="form-group">
+            <label>Địa chỉ:</label>
+            <p id="display-address"></p>
+        </div>
+        <div class="form-group">
+            <label>Ngày sinh:</label>
+            <p id="display-dob"></p>
+        </div>
+        <div class="form-group">
+            <label>Giới tính:</label>
+            <p id="display-gender"></p>
+        </div>
+        <div class="form-group">
+            <label>Số CMND/CCCD:</label>
+            <p id="display-id-number"></p>
+        </div>
+        <button type="button" class="btn-next" id="back-button">Quay lại</button>
+        <button type="button" class="btn-next" id="verify-button">Xác thực</button>
+    </div>
+
+    <!-- Phần hoàn thành đăng ký -->
+    <div class="registration-form" id="completion-form" style="display: none;">
+        <h3>Hoàn thành đăng ký</h3>
+        <div class="success-container">
+            <i class="fas fa-check-circle success-icon"></i>
+            <p id="success-message">Đăng ký của bạn đã được hoàn thành thành công!</p>
+            <p>Vui lòng thanh toán để kích hoạt tài khoản.</p>
+            <a href="thanh-toan.html" class="btn-next">Thanh toán ngay</a>
+        </div>
+    </div>
+
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 28 Nguyễn Thị Thập, Khu đô thị Him Lam, Tân Hưng, Quận 7, Hồ Chí Minh </p>
+                <p>Email: support@baohiemxahoi.com</p>
+                <p>Điện thoại: 1900 9099</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết hữu ích</h3>
+                <ul>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Hỏi đáp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bảo hiểm xã hội Việt Nam. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+    
+    <script src="js/main.js"></script>
+    <script src="js/dang-ky.js"></script>
+</body>
+</html>

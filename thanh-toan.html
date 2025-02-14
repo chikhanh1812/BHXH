@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thanh toán trực tuyến</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/icon-titel.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- Thư viện QRCode.js -->
+    <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo Bảo hiểm xã hội">
+            <h1>Thanh toán trực tuyến</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li><a href="dich-vu.html">Dịch vụ</a></li>
+                <li><a href="huong-dan.html">Hướng dẫn</a></li>
+                <li><a href="lien-he.html">Liên hệ</a></li>
+            </ul>
+            <div id="current-date" class="current-date"></div>
+        </nav>
+    </header>
+
+    <!-- Phần thanh toán -->
+    <section class="payment">
+        <h2>Thanh toán trực tuyến</h2>
+        <div class="payment-form">
+            <form id="paymentForm" action="/php/thanh-toan.php" method="POST">
+                <div class="form-group">
+                    <label for="id-number">Số CMND/CCCD:</label>
+                    <input type="text" id="id-number" name="id-number" placeholder="Nhập số CMND/CCCD" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Số thẻ BHXH:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Nhập số thẻ BHXH" required>
+                </div>
+                
+                <!-- Khu vực nhập OTP -->
+                <div class="form-group">
+                    <label for="otp">Xác thực bằng email đã đăng ký:</label>
+                    <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP" required>
+                    <button type="button" id="send-otp">Gửi mã</button>
+                    <button type="button" id="check-debt">Kiểm tra</button>
+                </div>
+
+                <!-- Hiển thị thông tin nợ phí và ngày thanh toán cuối cùng (ẨN mặc định) -->
+                <div id="debt-info" style="display: none;">
+                    <!-- Thông tin nợ và ngày thanh toán cuối cùng sẽ được hiển thị ở đây -->
+                </div>
+
+                <!-- Chọn số ngày thanh toán (ẨN mặc định) -->
+                <div class="form-group" id="payment-options" style="display: none;">
+                    <label for="days-to-pay">Chọn số ngày bạn muốn thanh toán trước:</label>
+                    <select id="days-to-pay" name="days-to-pay">
+                        <option value="30">30 ngày (300,000 VND)</option>
+                        <option value="90">90 ngày (900,000 VND)</option>
+                        <option value="180">180 ngày (1,800,000 VND)</option>
+                        <option value="365">365 ngày (3,650,000 VND)</option>
+                    </select>
+                </div>
+
+                <!-- Nút Thanh toán (ẨN mặc định) -->
+                <button type="submit" class="btn-pay" id="pay-btn" style="display: none;">Thanh toán</button>
+            </form>
+        </div>
+
+        <!-- Khu vực hiển thị mã QR -->
+        <div class="qr-code" id="qrCode">
+            <h3>Mã QR thanh toán</h3>
+            <div id="qrcode"></div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 28 Nguyễn Thị Thập, Khu đô thị Him Lam, Tân Hưng, Quận 7, Hồ Chí Minh </p>
+                <p>Email: support@baohiemxahoi.com</p>
+                <p>Điện thoại: 1900 9099</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bảo hiểm xã hội Việt Nam. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="js/thanh-toan.js"></script>
+    <script>
+        console.log('Script đang chạy...'); // Kiểm tra xem script có chạy không
+        const urlParams = new URLSearchParams(window.location.search);
+        const cardNumber = urlParams.get('card-number');
+        const idNumber = urlParams.get('id-number');
+    
+        if (cardNumber && idNumber) {
+            console.log('Card Number:', cardNumber); // Kiểm tra giá trị
+            console.log('ID Number:', idNumber);     // Kiểm tra giá trị
+            document.getElementById('card-number').value = cardNumber;
+            document.getElementById('id-number').value = idNumber;
+        } else {
+            console.error('Không tìm thấy thông tin card_number hoặc id_number trong URL.');
+        }
+    </script>
+</body>
+</html>
