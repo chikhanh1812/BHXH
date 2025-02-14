@@ -1,0 +1,634 @@
+/* Reset CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Header */
+header {
+    background: #007BFF;
+    color: white;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo {
+    display: flex;
+    align-items: center;
+}
+
+header .logo img {
+    height: 100px;
+    margin-right: 5px;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 1rem;
+}
+
+header nav ul li a {
+    color: white;
+    font-size: 15pt;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+header nav ul li a:hover {
+    text-decoration: underline;
+}
+
+/* CSS cho phần hiển thị ngày tháng */
+.current-date {
+    color: rgb(85, 42, 42);
+    font-size: 10pt;
+    text-align: center;
+    font-weight: inherit;
+}
+
+/* Banner */
+.banner {
+    background: url('/images/banner.png') no-repeat center center/cover;
+    color: rgb(19, 12, 34);
+    text-align: center;
+    padding: 5rem 1rem;
+    height: 400px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.banner h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.banner p {
+    font-size: 1.2rem;
+}
+
+/* Dịch vụ chính */
+.services {
+    padding: 2rem;
+    text-align: center;
+}
+
+.services h2 {
+    margin-bottom: 2rem;
+    color: #007BFF;
+}
+
+.service-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.service-item {
+    background: #f4f4f4;
+    padding: 1.5rem;
+    margin: 1rem;
+    border-radius: 8px;
+    width: 30%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.service-item h3 {
+    margin-bottom: 1rem;
+    color: #007BFF;
+}
+
+.service-item p {
+    margin-bottom: 1rem;
+}
+
+.service-item .btn {
+    background: #007BFF;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.service-item .btn:hover {
+    background: #0056b3;
+}
+
+/* Phần đăng ký */
+.registration {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.registration h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+}
+
+.registration-steps {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+}
+
+.registration-steps .step {
+    flex: 1;
+    text-align: center;
+    padding: 1rem;
+    background: #f4f4f4;
+    border-radius: 8px;
+    margin: 0 0.5rem;
+    position: relative;
+}
+
+.registration-steps .step.active {
+    background: #007BFF;
+    color: white;
+}
+
+.registration-steps .step span {
+    display: block;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.registration-form {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+}
+
+.registration-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.registration-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.registration-form .form-group input,
+.registration-form .form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.registration-form .btn-next {
+    background: #007BFF;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.registration-form .btn-next:hover {
+    background: #0056b3;
+}
+
+.btn-next {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-next:hover {
+    background-color: #0056b3;
+}
+
+/* Phần xác thực thông tin */
+#verification-form {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+}
+
+#verification-form h3 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    text-align: center;
+}
+
+#verification-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+#verification-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+#verification-form .form-group p {
+    background: white;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #555;
+    margin: 0;
+}
+
+#verification-form .btn-next {
+    background: #007BFF;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    margin-right: 1rem;
+}
+
+#verification-form .btn-next:hover {
+    background: #0056b3;
+}
+
+#verification-form .btn-back {
+    background: #6c757d;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;
+}
+
+#verification-form .btn-back:hover {
+    background: #5a6268;
+}
+
+/* Phần hoàn thành đăng ký */
+#completion-form {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+}
+
+#completion-form h3 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+}
+
+.success-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.success-icon {
+    font-size: 4rem;
+    color: #28a745; /* Màu xanh lá cây */
+    margin-bottom: 1rem;
+}
+
+#success-message {
+    font-size: 1.2rem;
+    color: #333;
+    margin-top: 1rem;
+}
+
+/* Phần tra cứu */
+.lookup {
+    padding: 2rem;
+    max-width: 1300px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.lookup h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+}
+
+.lookup-form {margin: auto;
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 2rem;
+    max-width: 40%;
+}
+
+.lookup-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.lookup-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.lookup-form .form-group input {
+    width: 80%;
+    margin: aut;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    text-align: left;
+}
+
+.lookup-form .btn-lookup {
+    background: #007BFF;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.lookup-form .btn-lookup:hover {
+    background: #0056b3;
+}
+
+.payment-button {
+    display: inline-block;
+    padding: 1px 5px;
+    background-color: #f05a46; /* Màu nền đỏ */
+    color: #ffffff; /* Màu chữ trắng */
+    text-decoration: none; /* Bỏ gạch chân */
+    border-radius: 10px; /* Bo góc */
+    cursor: pointer;
+}
+
+.payment-button:hover {
+    background-color: #cc0000; /* Màu nền khi hover */
+}
+
+/* Cập nhật kiểu dáng phần kết quả tra cứu để rộng hơn */
+.lookup-result {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+    display: none;
+    max-width: 100%; /* Mở rộng kích thước để cân đối hơn với trang */
+    margin: 2rem auto;
+}
+
+.lookup-result .result-details {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Chia cột để bố cục rõ ràng hơn */
+    gap: 1rem;
+}
+
+.lookup-result .result-details p {
+    font-size: 1.1rem;
+    background: white;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Cập nhật kiểu dáng bảng hồ sơ khám bệnh */
+.medical-records {
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.medical-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: white;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.medical-table th, .medical-table td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.medical-table th {
+    background-color: #007BFF;
+    color: white;
+}
+
+.medical-table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Phần thanh toán */
+.payment {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.payment h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.payment-form {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.payment-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.payment-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.payment-form .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.payment-form .form-group input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+#check-debt {
+    background: #007BFF;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+    transition: background 0.3s ease;
+}
+
+#check-debt:hover {
+    background: #0056b3;
+}
+
+#debt-info {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#debt-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #fd4343;
+}
+
+/* Nút gửi OTP */
+#send-otp {
+    background: #28a745;
+    color: white;
+    padding: 0.3rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 0.5rem;
+    margin-left: 87%;
+}
+
+#send-otp:hover {
+    background: #218838;
+}
+
+#send-otp:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+/* Nút gửi OTP */
+#pay-btn {
+    background: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+#pay-btn:hover {
+    background: #218838;
+}
+
+
+/* Khu vực hiển thị mã QR */
+.qr-code {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    margin-top: 2rem;
+    display: none; /* Ẩn ban đầu */
+}
+
+.qr-code h3 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    font-size: 1.5rem;
+}
+
+
+/* Footer */
+footer {
+    background: #333;
+    color: white;
+    padding: 2rem 0;
+    margin-top: 2rem;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.footer-section {
+    margin: 1rem;
+}
+
+.footer-section h3 {
+    margin-bottom: 1rem;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-section ul li a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #444;
+}
