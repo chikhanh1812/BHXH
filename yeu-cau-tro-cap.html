@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yêu cầu trợ cấp</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/icon-titel.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo Bảo hiểm xã hội">
+            <h1>Bảo Hiểm Xã Hội Việt Nam</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li class="dropdown">
+                    <a>Dịch vụ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dang-ky.html">Đăng ký bảo hiểm xã hội</a></li>
+                        <li><a href="tra-cuu.html">Tra cứu thông tin</a></li>
+                        <li><a href="thanh-toan.html">Thanh toán trực tuyến</a></li>
+                        <li><a href="yeu-cau-tro-cap.html">Gửi yêu cầu trợ cấp</a></li>
+                    </ul>
+                </li>
+                <li><a href="tin-tuc.html">Tin tức</a></li>
+                <li><a href="huong-dan.html">Hướng dẫn</a></li>
+            </ul>
+            <div id="current-date" class="current-date"></div>
+        </nav>
+    </header>
+
+    <!-- Phần yêu cầu trợ cấp -->
+    <section class="request">
+        <h2>Yêu cầu trợ cấp</h2>
+        <div class="request-form">
+            <form id="requestForm" action="/php/submit-request.php" method="POST">
+                <div class="form-group">
+                    <label for="id-number">Số CMND/CCCD:</label>
+                    <input type="text" id="id-number" name="id-number" placeholder="Nhập số CMND/CCCD" required>
+                </div>
+                <div class="form-group">
+                    <label for="card-number">Số thẻ BHXH:</label>
+                    <input type="text" id="card-number" name="card-number" placeholder="Nhập số thẻ BHXH" required>
+                </div>
+                
+                <!-- Khu vực nhập OTP -->
+                <div class="form-group">
+                    <label for="otp">Xác thực bằng email đã đăng ký:</label>
+                    <input type="text" id="otp" name="otp" placeholder="Nhập mã OTP" required>
+                    <button type="button" id="send-otp">Gửi mã</button>
+                    <button type="button" id="check-debt">Kiểm tra</button>
+                </div>
+
+                <!-- Hiển thị thông tin người dùng (ẨN mặc định) -->
+                <div id="user-info" style="display: none;">
+                    <h3>Thông tin người dùng</h3>
+                    <p><strong>Họ và tên:</strong> <span id="result-name"></span></p>
+                    <p><strong>Số thẻ BHXH:</strong> <span id="result-card-number"></span></p>
+                    <p><strong>Số CMND/CCCD:</strong> <span id="result-id-number"></span></p>
+                    <p><strong>Địa chỉ:</strong> <span id="result-address"></span></p>
+                    <p><strong>Số điện thoại:</strong> <span id="result-phone"></span></p>
+                    <p><strong>Ngày sinh:</strong> <span id="result-dob"></span></p>
+                    <p><strong>Ngày đăng ký:</strong> <span id="result-registration-date"></span></p>
+                </div>
+
+                <!-- Chọn loại trợ cấp -->
+                <div class="form-group" id="request-options" style="display: none;">
+                    <label for="request-type">Chọn loại trợ cấp:</label>
+                    <select id="request-type" name="request-type" value="accident">
+                        <option value="accident">Tai nạn lao động, bệnh nghề nghiệp</option>
+                        <option value="retired">Đã về hưu</option>
+                        <option value="unemployed">Nghỉ việc hơn 1 năm</option>
+                        <option value="abroad">Định cư nước ngoài</option>
+                        <option value="illness">Bệnh hiểm nghèo</option>
+                    </select>
+                </div>
+
+                <!-- Form nhập thông tin chi tiết (ẨN mặc định) -->
+                <div id="request-details" style="display: none;">
+                    <div class="form-group">
+                        <label for="company-name">Tên cơ quan/ công ty:</label>
+                        <input type="text" id="company-name" name="company-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="company-address">Địa chỉ:</label>
+                        <input type="text" id="company-address" name="company-address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="incident-date">Thời gian mất khả năng làm việc:</label>
+                        <input type="date" id="incident-date" name="incident-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Lý do cụ thể:</label>
+                        <textarea id="reason" name="reason" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="proof">Giấy xác nhận mất khả năng làm việc:</label>
+                        <input type="file" id="proof" name="proof" accept="image/*, application/pdf" required>
+                    </div>
+                </div>
+
+                <!-- Nút Gửi yêu cầu (ẨN mặc định) -->
+                <button type="submit" class="btn-submit" id="submit-btn" style="display: none;">Gửi yêu cầu</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 28 Nguyễn Thị Thập, Khu đô thị Him Lam, Tân Hưng, Quận 7, Hồ Chí Minh </p>
+                <p>Email: support@baohiemxahoi.com</p>
+                <p>Điện thoại: 1900 9099</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bảo hiểm xã hội Việt Nam. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script src="js/yeu-cau-tro-cap.js"></script>
+</body>
+</html>
