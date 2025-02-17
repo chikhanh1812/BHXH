@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tin tức - Bảo hiểm xã hội</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/icon-titel.png">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo Bảo hiểm xã hội">
+            <h1>Bảo Hiểm Xã Hội Việt Nam</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Trang chủ</a></li>
+                <li class="dropdown">
+                    <a>Dịch vụ</a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dang-ky.html">Đăng ký bảo hiểm xã hội</a></li>
+                        <li><a href="tra-cuu.html">Tra cứu thông tin</a></li>
+                        <li><a href="thanh-toan.html">Thanh toán trực tuyến</a></li>
+                        <li><a href="yeu-cau-tro-cap.html">Gửi yêu cầu trợ cấp</a></li>
+                    </ul>
+                </li>
+                <li><a href="tin-tuc.html">Tin tức</a></li>
+                <li><a href="huong-dan.html">Hướng dẫn</a></li>
+            </ul>
+            <div id="current-date" class="current-date"></div>
+        </nav>
+    </header>
+
+    <!-- Phần tin tức -->
+    <section class="news">
+        <h2>Tin tức mới nhất</h2>
+        <div class="news-list" id="news-list">
+            <!-- Các bài báo sẽ được hiển thị ở đây -->
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Liên hệ</h3>
+                <p>Địa chỉ: 28 Nguyễn Thị Thập, Khu đô thị Him Lam, Tân Hưng, Quận 7, Hồ Chí Minh </p>
+                <p>Email: support@baohiemxahoi.com</p>
+                <p>Điện thoại: 1900 9099</p>
+            </div>
+            <div class="footer-section">
+                <h3>Liên kết hữu ích</h3>
+                <ul>
+                    <li><a href="#">Chính sách bảo mật</a></li>
+                    <li><a href="#">Điều khoản sử dụng</a></li>
+                    <li><a href="#">Hỏi đáp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Bảo hiểm xã hội Việt Nam. Mọi quyền được bảo lưu.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Lấy danh sách bài báo từ server
+        fetch("http://localhost/php/get-news.php")
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    const newsList = document.getElementById('news-list');
+                    data.news.forEach(news => {
+                        const newsItem = document.createElement('div');
+                        newsItem.className = 'news-item';
+                        // Bao bọc toàn bộ bài viết trong một thẻ <a>
+                        newsItem.innerHTML = `
+                            <a href="${news.article_url}" target="_blank" style="display: block; text-decoration: none; color: inherit;">
+                                <img src="${news.image_url}" alt="${news.title}">
+                                <h3>${news.title}</h3>
+                                <p>${news.content}</p>
+                                <small>${new Date(news.created_at).toLocaleDateString()}</small>
+                            </a>
+                        `;
+                        newsList.appendChild(newsItem);
+                    });
+                } else {
+                    console.error('Không thể lấy danh sách bài báo.');
+                }
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+            });
+    </script>
+    <script src="js/main.js"></script>
+</body>
+</html>
