@@ -39,3 +39,32 @@ CREATE TABLE payments (
     status ENUM('pending', 'completed') DEFAULT 'pending',
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+CREATE TABLE news (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    image_url VARCHAR(255),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    article_url VARCHAR(255)
+);
+
+CREATE TABLE admin (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL,
+    password VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE requests (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    request_type ENUM('accident', 'retired', 'unemployed', 'abroad', 'illness') NOT NULL,
+    company_name VARCHAR(255),
+    company_address VARCHAR(255),
+    incident_date DATE,
+    reason TEXT,
+    proof_url VARCHAR(255),
+    status ENUM('pending', 'approved', 'rejected') DEFAULT 'pending',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
