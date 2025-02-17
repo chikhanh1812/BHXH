@@ -59,6 +59,60 @@ header nav ul li a:hover {
     font-weight: inherit;
 }
 
+/* CSS cho dropdown menu */
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 8px 11px;
+    display: block;
+}
+
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #34b3ee;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 500;
+    min-width: 200px;
+}
+
+.dropdown-menu li {
+    margin: 0;
+}
+
+.dropdown-menu li a {
+    padding: 10px 15px;
+    color: #333;
+    display: block;
+    font-size: 14px;
+}
+
+.dropdown-menu li a:hover {
+    background-color: #07719b;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
 /* Banner */
 .banner {
     background: url('/images/banner.png') no-repeat center center/cover;
@@ -312,7 +366,7 @@ header nav ul li a:hover {
 
 .success-icon {
     font-size: 4rem;
-    color: #28a745; /* Màu xanh lá cây */
+    color: #28a745; 
     margin-bottom: 1rem;
 }
 
@@ -586,6 +640,57 @@ header nav ul li a:hover {
     font-size: 1.5rem;
 }
 
+/* Phần tin tức */
+.news {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.news h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    font-size: 2rem;
+}
+
+.news-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.news-item {
+    background: #f4f4f4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.news-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.news-item h3 {
+    margin-bottom: 1rem;
+    color: #007BFF;
+    font-size: 1.5rem;
+}
+
+.news-item p {
+    margin-bottom: 1rem;
+    color: #555;
+}
+
+.news-item small {
+    color: #777;
+    font-size: 0.9rem;
+}
 
 /* Footer */
 footer {
@@ -631,4 +736,458 @@ footer {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid #444;
+}
+
+/* Phần quản lý admin */
+.admin-dashboard {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.admin-dashboard h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    font-size: 2rem;
+}
+
+.news-management {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.news-management h3 {
+    margin-bottom: 1rem;
+    color: #007BFF;
+    font-size: 1.5rem;
+}
+
+.news-management .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.news-management .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.news-management .form-group input,
+.news-management .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.news-management .form-group input:focus,
+.news-management .form-group textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.news-management .btn-add {
+    background: #007BFF;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.news-management .btn-add:hover {
+    background: #0056b3;
+}
+
+.news-list {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#list {
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+    color: #007BFF;
+    font-size: 1.5rem;
+}
+
+.news-item {
+    background: #f4f4f4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    cursor: pointer; /* Biến con trỏ thành hình bàn tay khi di chuột qua */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.news-item:hover {
+    transform: translateY(-5px); /* Hiệu ứng nổi lên khi hover */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Đổ bóng mạnh hơn khi hover */
+}
+
+.news-item a {
+    text-decoration: none; /* Bỏ gạch chân của liên kết */
+    color: inherit; /* Kế thừa màu chữ từ phần tử cha */
+}
+
+.news-item h4 {
+    margin-bottom: 0.5rem;
+    color: #007BFF;
+    font-size: 1.2rem;
+}
+
+.news-item p {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.news-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+}
+
+.news-item small {
+    color: #777;
+    font-size: 0.9rem;
+}
+
+.news-item button {
+    background: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.news-item button:hover {
+    background: #c82333;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .admin-dashboard {
+        padding: 1rem;
+    }
+
+    .news-management,
+    .news-list {
+        padding: 1rem;
+    }
+
+    .news-item {
+        padding: 0.75rem;
+    }
+
+    .news-item h4 {
+        font-size: 1rem;
+    }
+
+    .news-item p {
+        font-size: 0.9rem;
+    }
+
+    .news-item img {
+        height: 150px;
+    }
+}
+
+/* Phần đăng nhập admin */
+.admin-login {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    margin: 2rem auto;
+}
+
+.admin-login h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    font-size: 1.8rem;
+}
+
+.admin-login .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+.admin-login .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.admin-login .form-group input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.admin-login .form-group input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.admin-login .btn-login {
+    background: #007BFF;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    transition: background 0.3s ease;
+}
+
+.admin-login .btn-login:hover {
+    background: #0056b3;
+}
+
+/* Responsive design */
+@media (max-width: 480px) {
+    .admin-login {
+        padding: 1.5rem;
+    }
+
+    .admin-login h2 {
+        font-size: 1.5rem;
+    }
+
+    .admin-login .btn-login {
+        padding: 0.5rem 1rem;
+    }
+}
+
+/* Phần quản lý yêu cầu trợ cấp */
+.admin-requests {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.admin-requests h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    font-size: 2rem;
+}
+
+.requests-list {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.request-item {
+    background: #f4f4f4;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.request-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.request-item h4 {
+    margin-bottom: 0.5rem;
+    color: #007BFF;
+    font-size: 1.2rem;
+}
+
+.request-item p {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+#duyet{
+    background: #1100fa;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+#duyet:hover {
+    background: #2c1cbe;
+}
+
+#tuchoi{
+    background: #dc3545;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    margin-right: 0.5rem;
+}
+
+#tuchoi:hover {
+    background: #c82333;
+}
+
+.request-item button.approve {
+    background: #28a745;
+}
+
+.request-item button.approve:hover {
+    background: #218838;
+}
+
+/* Phần yêu cầu trợ cấp */
+.request {
+    padding: 2rem;
+    max-width: 800px;
+    margin: 2rem auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.request h2 {
+    margin-bottom: 1.5rem;
+    color: #007BFF;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.request-form {
+    background: #f4f4f4;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: left;
+    margin-bottom: 2rem;
+}
+
+.request-form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+.request-form .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+    color: #555;
+}
+
+.request-form .form-group input,
+.request-form .form-group select,
+.request-form .form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.request-form .form-group input:focus,
+.request-form .form-group select:focus,
+.request-form .form-group textarea:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.request-form .btn-submit {
+    background: #28a745;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.request-form .btn-submit:hover {
+    background: #218838;
+}
+
+#user-info {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+#user-info p {
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+#user-info h3 {
+    margin-left: 35%;
+    margin-bottom: 0.5rem;
+    color: #3803fa;
+}
+
+
+#request-details {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1.5rem;
+}
+
+#request-details h3 {
+    margin-bottom: 1rem;
+    color: #007BFF;
+    font-size: 1.5rem;
+}
+
+/* Màu xanh cho trạng thái "approved" */
+.status-approved {
+    color: green;
+    font-weight: bold;
+}
+
+/* Màu đỏ cho trạng thái "rejected" */
+.status-rejected {
+    color: red;
+    font-weight: bold;
+}
+
+/* Màu vàng cho trạng thái "pending" */
+.status-pending {
+    color: orange;
+    font-weight: bold;
 }
