@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Yêu cầu Trợ cấp</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="/images/logo.png" alt="Logo Bảo hiểm xã hội">
+            <h1>Quản lý Yêu cầu Trợ cấp</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="admin-dashboard.html">Quản lý tin tức</a></li>
+                <li><a href="admin-requests.html">Quản lý yêu cầu</a></li>
+                <li><a href="admin-login.html">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="admin-requests">
+        <h2>Danh sách yêu cầu trợ cấp</h2>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Nhập CCCD/CMND hoặc số thẻ BHXH...">
+            <button onclick="searchRequests()">Tìm kiếm</button>
+        </div>
+        <div class="requests-list">
+            <div id="requests-list">
+                <!-- Danh sách yêu cầu sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+    </section>
+</body>
+<script src="/js/admin-requests.js"></script>
+</html>

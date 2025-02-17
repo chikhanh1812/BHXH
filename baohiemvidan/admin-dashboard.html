@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo Bảo hiểm xã hội">
+            <h1>Quản lý Admin</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="admin-dashboard.html">Quản lý tin tức</a></li>
+                <li><a href="admin-requests.html">Quản lý yêu cầu</a></li>
+                <li><a href="admin-login.html">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="admin-dashboard">
+        <h2>Quản lý tin tức</h2>
+        <div class="news-management">
+            <h3>Thêm tin tức mới</h3>
+            <form id="add-news-form">
+                <div class="form-group">
+                    <label for="title">Tiêu đề:</label>
+                    <input type="text" id="title" name="title" required>
+                </div>
+                <div class="form-group">
+                    <label for="content">Nội dung:</label>
+                    <textarea id="content" name="content" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="image_url">URL ảnh:</label>
+                    <input type="text" id="image_url" name="image_url" required>
+                </div>
+                <div class="form-group">
+                    <label for="article_url">URL bài viết:</label>
+                    <input type="text" id="article_url" name="article_url" required>
+                </div>
+                <button type="submit" class="btn-add">Thêm tin tức</button>
+            </form>
+        </div>
+
+        <h3 id="list">Danh sách tin tức</h3>
+        <div class="news-list">
+            <div id="news-list">
+                <!-- Danh sách tin tức sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Thêm tin tức mới
+        document.getElementById('add-news-form').addEventListener('submit', function (event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const content = document.getElementById('content').value;
+            const image_url = document.getElementById('image_url').value;
+            const article_url = document.getElementById('article_url').value;
+
+            fetch("http://localhost/php/add-news.php", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ title, content, image_url, article_url })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Thêm tin tức thành công.');
+                    loadNews();
+                } else {
+                    alert(data.message || 'Có lỗi xảy ra khi thêm tin tức.');
+                }
+            })
+            .catch(error => {
+                console.error('Lỗi:', error);
+                alert('Có lỗi xảy ra khi thêm tin tức.');
+            });
+        });
+
+        // Xóa tin tức
+        function deleteNews(id) {
+            if (confirm('Bạn có chắc chắn muốn xóa tin tức này không?')) {
+                fetch(`http://localhost/php/delete-news.php?id=${id}`, {
+                    method: 'DELETE'
+                })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        alert('Xóa tin tức thành công.');
+                        loadNews();
+                    } else {
+                        alert(data.message || 'Có lỗi xảy ra khi xóa tin tức.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Lỗi:', error);
+                    alert('Có lỗi xảy ra khi xóa tin tức.');
+                });
+            }
+        }
+
+        // Tải danh sách tin tức
+        function loadNews() {
+            fetch("http://localhost/php/get-news.php")
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        const newsList = document.getElementById('news-list');
+                        newsList.innerHTML = '';
+                        data.news.forEach(news => {
+                            const newsItem = document.createElement('div');
+                            newsItem.className = 'news-item';
+                            newsItem.innerHTML = `
+                                <h4>${news.title}</h4>
+                                <p>${news.content}</p>
+                                <img src="${news.image_url}" alt="${news.title}">
+                                <small>${new Date(news.created_at).toLocaleDateString()}</small>
+                                <button onclick="deleteNews(${news.id})">Xóa</button>
+                            `;
+                            newsList.appendChild(newsItem);
+                        });
+                    } else {
+                        console.error('Không thể lấy danh sách tin tức.');
+                    }
+                })
+                .catch(error => {
+                    console.error('Lỗi:', error);
+                });
+        }
+
+        // Tải danh sách tin tức khi trang được tải
+        loadNews();
+    </script>
+</body>
+</html>
