@@ -8,12 +8,34 @@ document.addEventListener('DOMContentLoaded', function () {
     const userInfo = document.getElementById('user-info');
     let generatedOtp = null;
     let cardNumber = null;
+    let countdownInterval = null; // Biến để lưu interval đếm ngược
 
     // Ẩn các phần form ban đầu
     requestOptions.style.display = "none";
     requestDetails.style.display = "none";
     submitButton.style.display = "none";
     userInfo.style.display = "none";
+
+    // Hàm đếm ngược thời gian
+    function startCountdown(seconds) {
+        let remainingTime = seconds;
+        sendOtpButton.disabled = true; // Vô hiệu hóa nút gửi mã
+
+        // Cập nhật nội dung nút với thời gian đếm ngược
+        sendOtpButton.textContent = `Gửi lại sau ${remainingTime}s`;
+
+        countdownInterval = setInterval(() => {
+            remainingTime--;
+            sendOtpButton.textContent = `Gửi lại sau ${remainingTime}s`;
+
+            // Khi thời gian đếm ngược kết thúc
+            if (remainingTime <= 0) {
+                clearInterval(countdownInterval); // Dừng đếm ngược
+                sendOtpButton.disabled = false; // Kích hoạt lại nút
+                sendOtpButton.textContent = "Gửi mã"; // Đặt lại nội dung nút
+            }
+        }, 1000); // Cập nhật mỗi giây
+    }
 
     // Gửi OTP
     sendOtpButton.addEventListener('click', function () {
@@ -37,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.success) {
                 generatedOtp = data.otp; // Lưu mã OTP từ server
                 alert('Mã OTP đã được gửi đến email của bạn.');
+                startCountdown(60);
             } else {
                 alert(data.message || 'Không tìm thấy thông tin người dùng.');
             }

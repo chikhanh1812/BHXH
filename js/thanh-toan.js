@@ -6,25 +6,47 @@ document.addEventListener('DOMContentLoaded', function () {
     const debtInfo = document.getElementById('debt-info');
     const payButton = document.getElementById('pay-btn');
     const paymentForm = document.getElementById('paymentForm');
-    const lastPaymentDateInfo = document.getElementById('last-payment-date');
     let generatedOtp = null;
     let cardNumber = null;
+    let countdownInterval = null; // Biến để lưu interval đếm ngược
 
     // Ẩn phần chọn ngày thanh toán và nút thanh toán ban đầu
     paymentOptions.style.display = "none";
     payButton.style.display = "none";
     debtInfo.style.display = "none";
 
+    // Hàm đếm ngược thời gian
+    function startCountdown(seconds) {
+        let remainingTime = seconds;
+        sendOtpButton.disabled = true; // Vô hiệu hóa nút gửi mã
+
+        // Cập nhật nội dung nút với thời gian đếm ngược
+        sendOtpButton.textContent = `Gửi lại sau ${remainingTime}s`;
+
+        countdownInterval = setInterval(() => {
+            remainingTime--;
+            sendOtpButton.textContent = `Gửi lại sau ${remainingTime}s`;
+
+            // Khi thời gian đếm ngược kết thúc
+            if (remainingTime <= 0) {
+                clearInterval(countdownInterval); // Dừng đếm ngược
+                sendOtpButton.disabled = false; // Kích hoạt lại nút
+                sendOtpButton.textContent = "Gửi mã"; // Đặt lại nội dung nút
+            }
+        }, 1000); // Cập nhật mỗi giây
+    }
+
     // Gửi OTP
     sendOtpButton.addEventListener('click', function () {
         const idNumber = document.getElementById('id-number').value.trim();
         cardNumber = document.getElementById('card-number').value.trim();
-    
+
         if (!idNumber || !cardNumber) {
             alert('Vui lòng nhập số CMND/CCCD và số thẻ BHXH.');
             return;
         }
-    
+
+        // Gửi yêu cầu OTP
         fetch("http://localhost/php/get-email.php", {
             method: 'POST',
             headers: {
@@ -37,6 +59,9 @@ document.addEventListener('DOMContentLoaded', function () {
             if (data.success) {
                 generatedOtp = data.otp; // Lưu mã OTP từ server
                 alert('Mã OTP đã được gửi đến email của bạn.');
+
+                // Bắt đầu đếm ngược 60 giây
+                startCountdown(60);
             } else {
                 alert(data.message || 'Không tìm thấy thông tin người dùng.');
             }
@@ -82,10 +107,10 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.getElementById('result-phone').textContent = data.user.phone;
                 document.getElementById('result-dob').textContent = data.user.dob;
                 document.getElementById('result-registration-date').textContent = new Date(data.user.registration_date).toLocaleDateString();
-        
+
                 // Hiển thị phần thông tin người dùng
                 document.getElementById('user-info').style.display = "block";
-        
+
                 // Hiển thị thông tin nợ
                 if (data.debt.amount > 0) {
                     debtInfo.innerHTML = `
