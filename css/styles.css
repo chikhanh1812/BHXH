@@ -134,6 +134,34 @@ nav ul li a {
     font-size: 1.2rem;
 }
 
+/* Marquee Styles */
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #333; /* Màu nền với độ trong suốt */
+    color: white;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.marquee p {
+    display: inline-block;
+    padding-left: 100%; /* Bắt đầu từ bên phải màn hình */
+    animation: marquee 30s linear infinite;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
 /* Dịch vụ chính */
 .services {
     padding: 2rem;
@@ -603,6 +631,7 @@ nav ul li a {
 
 #send-otp:disabled {
     background: #6c757d;
+    font-size: 10pt;
     cursor: not-allowed;
 }
 
@@ -1190,4 +1219,204 @@ footer {
 .status-pending {
     color: orange;
     font-weight: bold;
+}
+
+/* CSS cho phần hướng dẫn */
+.guide {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.guide-list {
+    margin-top: 20px;
+}
+
+.guide-item {
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.guide-item:hover {
+    margin-bottom: 10px;
+    border: 2px solid #ca1010;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+.guide-item h3 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+
+.guide-content {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+}
+
+.guide-content ol {
+    padding-left: 20px;
+}
+
+.guide-content ol li {
+    margin-bottom: 10px;
+}
+
+.guide-content a {
+    color: #34b3ee;
+    text-decoration: none;
+}
+
+.guide-content a:hover {
+    text-decoration: underline;
+}
+
+/* Admin Lookup Section */
+.admin-lookup {
+    padding: 20px;
+    background-color: white;
+    margin: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-lookup h2 {
+    margin-bottom: 20px;
+    margin-left: 40%;
+    color: #007bff;
+}
+
+.lookup-form {
+    margin-bottom: 20px;
+}
+
+.lookup-form .form-group {
+    margin-bottom: 15px;
+}
+
+.lookup-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.lookup-form .form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.lookup-form .btn-lookup {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.lookup-form .btn-lookup:hover {
+    background-color: #0056b3;
+}
+
+/* Lookup Result Section */
+.lookup-result {
+    display: none;
+    margin-top: 20px;
+}
+
+.lookup-result h3 {
+    text-align: center;
+    color: #007bff;
+}
+
+.result-details {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.result-details p {
+    margin: 10px 0;
+}
+
+.result-details strong {
+    color: #007bff;
+}
+
+.medical-records {
+    margin-top: 20px;
+}
+
+.medical-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.medical-table th, .medical-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.medical-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.medical-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    header nav ul {
+        flex-direction: column;
+        margin-top: 10px;
+    }
+
+    header nav ul li {
+        margin: 10px 0;
+    }
+
+    .admin-lookup {
+        margin: 10px;
+    }
+
+    .lookup-form .form-group input {
+        font-size: 14px;
+    }
+
+    .lookup-form .btn-lookup {
+        width: 100%;
+        font-size: 14px;
+    }
+}
+
+.search-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 10px;
+    border-radius: 4px;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid #c62828;
 }
