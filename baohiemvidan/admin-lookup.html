@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tra cứu thông tin - Admin</title>
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="icon" type="image/x-icon" href="/images/icon-titel.png">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="../images/logo.png" alt="Logo Bảo hiểm xã hội">
+            <h1>Quản lý Bảo Hiểm Xã Hội</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="admin-lookup.html">Tra cứu thông tin</a></li>
+                <li><a href="admin-requests.html">Quản lý yêu cầu</a></li>
+                <li><a href="admin-dashboard.html">Quản lý tin tức</a></li>
+                <li><a href="admin-login.html">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="admin-lookup">
+        <h2>Tra cứu thông tin người dùng</h2>
+        <div class="lookup-form">
+            <form id="adminLookupForm">
+                <div class="form-group">
+                    <label for="admin-search-input">Nhập số thẻ BHXH hoặc số CMND/CCCD:</label>
+                    <input type="text" id="admin-search-input" name="search-input" placeholder="Nhập số thẻ BHXH hoặc số CMND/CCCD" required>
+                </div>
+                <button type="submit" class="btn-lookup">Tra cứu</button>
+            </form>
+        </div>
+
+        <!-- Phần hiển thị thông báo -->
+        <div id="admin-search-message" class="search-message" style="display: none;">
+            <p>Không tìm thấy thông tin người dùng.</p>
+        </div>
+
+        <!-- Phần hiển thị kết quả tra cứu -->
+        <div class="lookup-result" id="adminLookupResult" style="display: none;">
+            <h3 style="text-align: center;">Thông tin người đăng ký</h3>
+            <div class="result-details">
+                <p><strong>Họ và tên:</strong> <span id="admin-result-name">Nguyễn Văn A</span></p>
+                <p><strong>Ngày sinh:</strong> <span id="admin-result-dob">1999</span></p>
+                <p><strong>Số CMND/CCCD:</strong> <span id="admin-result-id-number">0123456789</span></p>
+                <p><strong>Số thẻ BHXH:</strong> <span id="admin-result-card-number">123456789</span></p>
+                <p><strong>Địa chỉ:</strong> <span id="admin-result-address">Chưa cập nhật</span></p>
+                <p><strong>Số điện thoại:</strong> <span id="admin-result-phone">0123456789</span></p>
+                <p><strong>Ngày đăng ký:</strong> <span id="admin-result-registration-date">01/01/2023</span></p>
+                <p><strong>Trạng thái tài khoản:</strong> 
+                    <span id="admin-result-status">
+                        <!-- Nội dung sẽ được thay đổi bằng JavaScript -->
+                    </span>
+                </p>
+            </div>
+
+            <!-- Phần hiển thị hồ sơ khám bệnh -->
+            <div class="medical-records" id="adminMedicalRecords">
+                <h3 style="text-align: center;">Hồ sơ khám bệnh</h3>
+                <table class="medical-table">
+                    <thead>
+                        <tr>
+                            <th>Bệnh viện</th>
+                            <th>Bệnh</th>
+                            <th>Viện phí</th>
+                            <th>Đã thanh toán</th>
+                            <th>Đã hoàn tiền BHXH</th>
+                            <th>Ngày vào viện</th>
+                            <th>Ngày ra viện</th>
+                        </tr>
+                    </thead>
+                    <tbody id="adminMedicalRecordsList">
+                        <!-- Dữ liệu sẽ được thêm ở đây -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="/js/admin-lookup.js"></script>
+</body>
+</html>
