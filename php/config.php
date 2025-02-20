@@ -1,8 +1,12 @@
 <?php
-$host = 'localhost'; // Địa chỉ máy chủ MySQL
-$dbname = 'bhxh'; // Tên database
-$username = 'root'; // Tên đăng nhập MySQL
-$password = ''; // Mật khẩu MySQL
+require 'vendor/autoload.php';
+$dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+$dotenv->load();
+
+$host = $_ENV['DATABASE_HOST'];
+$dbname = $_ENV['DATABASE_NAME'];
+$username = $_ENV['DATABASE_USER'];
+$password = $_ENV['DATABASE_PASSWORD'];
 
 try {
     $conn = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
