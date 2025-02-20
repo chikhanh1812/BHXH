@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const payButton = document.getElementById('pay-btn');
     const paymentForm = document.getElementById('paymentForm');
     let generatedOtp = null;
-    let cardNumber = null;
     let countdownInterval = null; // Biến để lưu interval đếm ngược
 
     // Ẩn phần chọn ngày thanh toán và nút thanh toán ban đầu
@@ -15,6 +14,20 @@ document.addEventListener('DOMContentLoaded', function () {
     payButton.style.display = "none";
     debtInfo.style.display = "none";
 
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    // Lấy giá trị card_number và id_number từ URL
+    const cardNumber = getQueryParam('card_number');
+    const idNumber = getQueryParam('id_number');
+
+    // Nếu có giá trị, điền vào các trường input tương ứng
+    if (cardNumber && idNumber) {
+        document.getElementById('card-number').value = cardNumber;
+        document.getElementById('id-number').value = idNumber;
+    }
     // Hàm đếm ngược thời gian
     function startCountdown(seconds) {
         let remainingTime = seconds;
