@@ -660,7 +660,7 @@ nav ul li a {
     border-radius: 8px;
     text-align: center;
     margin-top: 2rem;
-    display: none; /* Ẩn ban đầu */
+    display: block;
 }
 
 .qr-code h3 {

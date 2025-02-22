@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const debtInfo = document.getElementById('debt-info');
     const payButton = document.getElementById('pay-btn');
     const paymentForm = document.getElementById('paymentForm');
+    let cardNumber = null;
     let generatedOtp = null;
     let countdownInterval = null; // Biến để lưu interval đếm ngược
 
@@ -14,20 +15,6 @@ document.addEventListener('DOMContentLoaded', function () {
     payButton.style.display = "none";
     debtInfo.style.display = "none";
 
-    function getQueryParam(param) {
-        const urlParams = new URLSearchParams(window.location.search);
-        return urlParams.get(param);
-    }
-
-    // Lấy giá trị card_number và id_number từ URL
-    const cardNumber = getQueryParam('card_number');
-    const idNumber = getQueryParam('id_number');
-
-    // Nếu có giá trị, điền vào các trường input tương ứng
-    if (cardNumber && idNumber) {
-        document.getElementById('card-number').value = cardNumber;
-        document.getElementById('id-number').value = idNumber;
-    }
     // Hàm đếm ngược thời gian
     function startCountdown(seconds) {
         let remainingTime = seconds;
@@ -153,7 +140,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // Xử lý thanh toán
+    /// Xử lý thanh toán
     paymentForm.addEventListener('submit', function (event) {
         event.preventDefault();
 
@@ -169,13 +156,23 @@ document.addEventListener('DOMContentLoaded', function () {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+
+                // Hiển thị mã QR từ file /images/qr.jpg
+                const qrCodeH3  = document.getElementById('qrcodeH3');
+                qrCodeH3.textContent = "Mã QR thanh toán";
+                const qrCodeDiv = document.getElementById('qrcode');
+                qrCodeDiv.innerHTML = `<img src="/images/qr.jpg" alt="Mã QR thanh toán" style="width: 200px; height: 200px;">`;
+
+                // Hiển thị thông tin thanh toán
+                const paymentInfo = document.createElement('p');
+                paymentInfo.textContent = `Bạn đã thanh toán thành công số tiền ${daysToPay * 10000} VND.`;
+                qrCodeDiv.appendChild(paymentInfo);
+
+                // Cập nhật giao diện người dùng
+                document.getElementById('payment-options').style.display = 'none';
+                document.getElementById('pay-btn').style.display = 'none';
+                // Hiển thị thông báo thành công
                 alert(data.message);
-                // Hiển thị mã QR sau khi thanh toán thành công
-                new QRCode(document.getElementById('qrcode'), {
-                    text: `Thanh toán: ${daysToPay * 10000} VND`,
-                    width: 200,
-                    height: 200
-                });
             } else {
                 alert(data.message || 'Có lỗi xảy ra khi thanh toán.');
             }

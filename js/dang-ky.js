@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 document.querySelector('.btn-next').addEventListener('click', function () {
                     const cardNumber = result.cardNumber; // Số thẻ BHXH từ server
                     const idNumber = data.idNumber;       // Số CMND/CCCD từ form
-                    window.location.href = `thanh-toan.html?card_number=${result.cardNumber}&id_number=${result.idNumber}}`;
+                    window.location.href = `thanh-toan.html`;
                 });
             } else {
                 alert(result.message || 'Có lỗi xảy ra khi đăng ký. Vui lòng thử lại.');
