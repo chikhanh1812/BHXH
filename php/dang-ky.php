@@ -90,8 +90,8 @@ if (isIdNumberExists($conn, $data['idNumber'])) {
 $cardNumber = generateCardNumber($conn);
 
 // Chuẩn bị câu lệnh SQL để thêm người dùng mới
-$sql = "INSERT INTO users (fullname, phone, email, address, dob, gender, id_number, card_number) 
-        VALUES (:fullname, :phone, :email, :address, :dob, :gender, :idNumber, :cardNumber)";
+$sql = "INSERT INTO users (fullname, phone, email, address, dob, gender, id_number, card_number, last_payment_date) 
+        VALUES (:fullname, :phone, :email, :address, :dob, :gender, :idNumber, :cardNumber, CURDATE())";
 $stmt = $conn->prepare($sql);
 
 // Thực thi câu lệnh
